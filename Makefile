@@ -83,7 +83,7 @@ clean-docs:
 	perl -pi -e "s?$$ABSPATH/??g" ./docs/*.html
 
 clean:
-	rm -rf dist build $(LIB_DIR)
+	rm -rf dist build $(LIB_DIR) $(TEST_BLD) $(STYLUS_BLD)
 
 test: all $(TEST_TGT)
 	node test/tap
