@@ -1,0 +1,49 @@
+.jsk-text-field {
+    position: relative
+
+    input {
+        background: transparent
+        box-shadow: none
+        border: none
+        border-bottom: 1px solid input-border-colour
+        color: input-text-colour
+        display: block
+        width: 100%
+        height: 2em
+        line-height: 2em
+        padding: 0 0.5em
+        font-size: 1.2em
+        transition: all 250ms ease-in-out
+        transition-property: border, color
+    }
+
+    .jsk-field-label {
+        display: block;
+        font-size: 0.8em
+        text-transform: uppercase
+        font-weight: 600;
+        color: base-faded-text-colour
+        margin-bottom: 5px
+        opacity: 0
+        transition: opacity 250ms ease-in-out
+    }
+
+    .jsk-field-description {
+        margin-top: 5px
+        color: input-description-colour
+    }
+
+    &.jsk-has-text {
+        .jsk-field-label {
+            opacity: 1
+        }
+    }
+    &.jsk-focused {
+        input {
+            color: input-focus-colour
+            border-color: input-focus-colour
+            border-width: 2px
+        }
+    }
+
+}
