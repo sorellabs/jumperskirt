@@ -23,8 +23,8 @@ union AutoComplete {
 } deriving (Extractor, Eq)
 
 AutoComplete::toProperties = λ(_) -> match this {
-  Default => ({ 'autocomplete': 'on' }), 
-  None => ({ 'autocomplete': 'off' })
+  Default => ({ 'autoComplete': 'on' }), 
+  None => ({ 'autoComplete': 'off' })
 }
 
 
@@ -36,7 +36,7 @@ var TextInput = module.exports = React.createClass({
       Password: Password
     },
 
-    autocomplete: {
+    autoComplete: {
       Default: AutoComplete.Default,
       None: AutoComplete.None
     }
@@ -50,7 +50,7 @@ var TextInput = module.exports = React.createClass({
     type: T.oneOf([InputType.Text, InputType.Password]).isRequired,
     
     // Builtin browser's autocomplete
-    autocomplete: T.oneOf([AutoComplete.Default, AutoComplete.None]),
+    autoComplete: T.oneOf([AutoComplete.Default, AutoComplete.None]),
 
     // Placeholder for the input
     placeholder: T.string,
