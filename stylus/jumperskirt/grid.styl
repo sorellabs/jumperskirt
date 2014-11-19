@@ -1,0 +1,203 @@
+// Copyright (c) 2014 Quildreen Motta <quildreen@gmail.com>
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation files
+// (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge,
+// publish, distribute, sublicense, and/or sell copies of the Software,
+// and to permit persons to whom the Software is furnished to do so,
+// subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+/**
+ * A modular implementation of semantic grids for Stylus,
+ * using namespaces, based off [Semantic Grid][] by [Tayler Tate][].
+ *
+ * [Semantic Grid]: http://semantic.gs/
+ * [Tayler Tate]: https://twitter.com/tylertate
+ *
+ * This module provides you with three constructor mixins for useful
+ * presentation behaviours:
+ *
+ *   jsk-grid-row:     Defines a row
+ *   jsk-grid-column:  Defines a column
+ *   jsk-grid-offset:  Defines an offset
+ */
+
+// -- Public API -------------------------------------------------------
+
+/* ### Function: jsk-grid-row
+ *
+ * Stylises the element as a row in the grid.
+ *  
+ * + type: Module -> CSS
+ */
+jsk-grid-row(columns = jsk-grid-columns)
+  gutter        = jsk-grid--row-gutter(columns)
+  gutter-margin = jsk-grid--gutter-margin(columns) * -1
+
+  display: block
+  jsk-grid--dimensions: gutter gutter-margin
+
+
+/* ### Function: jsk-grid-column
+ * 
+ * Stylises the element as a column in the grid. The size defines the
+ * width of the column, in modules.
+ *  
+ * + type: (Module, Module) -> CSS
+ */
+jsk-grid-column(size, columns = jsk-grid-columns)
+  gutter        = jsk-grid--column-gutter(size, columns)
+  gutter-margin = jsk-grid--gutter-margin(columns)
+
+  display: inline
+  float: left
+  jsk-grid--dimensions: gutter gutter-margin
+
+
+/* ### Function: jsk-grid-offset
+ *
+ * Stylises the element as white-space in the grid.
+ *  
+ * + type: (Module, Module) -> CSS
+ */
+jsk-grid-offset(offset, columns = jsk-grid-columns)
+  gutter-margin = jsk-grid--gutter-margin(columns)
+  margin-offset = jsk-grid-gutter + jsk-grid-module-width
+
+  margin-left: jsk-grid-width * (margin-offset * offset + gutter-margin)
+
+
+// ## Configuration ####################################################
+
+/* ### Data: jsk-grid-module-width
+ *
+ * The size of the basic unit in the grid (a module). Gutter and column
+ * sizes are derived from this unit.
+ */
+jsk-grid-module-width = 60px
+
+/* ### Data: jsk-grid-gutter
+ *
+ * The spacing between each column in a grid.
+ */
+jsk-grid-gutter = 20px
+
+/* ### Data: jsk-grid-columns
+ * 
+ * The total number of columns in the grid.
+ */
+jsk-grid-columns = 12
+
+/* ### Data: jsk-grid-width
+ *
+ * The maximum size of the grid. If a percentage, the grid will be
+ * automatically fluid.
+ */
+jsk-grid-width = jsk-grid--size(jsk-grid-columns)
+
+/* ### Data: jsk-grid-min-width
+ * 
+ * The minimum width of the grid.
+ */
+jsk-grid-min-width = 960px
+
+
+
+// ## Helpers ##########################################################
+
+/* ### Function: jsk-grid--size
+ *
+ * Computes the total size of the given columns in the grid.
+ *  
+ * + type: Module -> Unit
+ * + internal
+ */
+jsk-grid--size(columns = jsk-grid-columns)
+  width  = jsk-grid-module-width
+  gutter = jsk-grid-gutter
+
+  (width + gutter) * columns
+
+
+/* ### Function: jsk-grid--fix-pixel-rounding
+ *
+ * Corrects pixel rounding for IE.
+ *  
+ * + type: Unit -> Unit
+ * + internal
+ */
+jsk-grid--fix-pixel-rounding(pixels)
+  min-width = jsk-grid-min-width
+  
+  pixels - (((0.5 / min-width) * 100) * 1%)
+
+
+/* ### Function: jsk-grid--row-gutter
+ * 
+ * Computes the spacing between rows.
+ *  
+ * + type: Module -> Unit
+ * + internal
+ */
+jsk-grid--row-gutter(columns)
+  size   = jsk-grid--size(columns)
+  gutter = jsk-grid-gutter
+
+  (gutter + size) / size
+
+
+/* ### Function: jsk-grid--column-gutter
+ *
+ * Computes the spacing between columns.
+ *  
+ * + type: (Module, Module) -> Unit
+ * + internal
+ */
+jsk-grid--column-gutter(n, columns = jsk-grid-columns)
+  gutter = jsk-grid-gutter
+  width  = jsk-grid-module-width
+  size   = jsk-grid--size(columns)
+
+  (((gutter + width) * n) - gutter) / size
+
+
+/* ### Function: jsk-grid--gutter-margin
+ * 
+ * Computes the margin for columns.
+ *  
+ * + type: Module -> Unit
+ * + internal
+ */
+jsk-grid--gutter-margin(columns = jsk-grid-columns)
+  gutter = jsk-grid-gutter
+  size   = jsk-grid--size(columns)
+
+  (gutter * 0.5) / size
+
+
+/* ### Function: jsk-grid--dimensions
+ *
+ * Compute the dimensions of a grid part.
+ *  
+ * + type: (Unit, Unit) -> CSS
+ * + internal
+ */
+jsk-grid--dimensions(gutter, margin)
+  fix-rounding = jsk-grid--fix-pixel-rounding
+
+  width:   jsk-grid-width * gutter
+  margin:  0 (jsk-grid-width * margin)
+  *width:  fix-rounding(@width)
+  *margin: 0 fix-rounding(last(@margin))
