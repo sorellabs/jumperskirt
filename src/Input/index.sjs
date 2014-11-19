@@ -78,7 +78,7 @@ var TextInput = module.exports = React.createClass({
       description: '',
       initialValue: '',
       label: '',
-      autocomplete: AutoComplete.Default,
+      autocomplete: AutoComplete.None,
       onChange: function(){ }
     }
   },
