@@ -3,7 +3,7 @@ var extend = require('xtend');
 var { Extractor, Eq } = require('adt-simple');
 
 var { PropTypes: T, addons: { classSet }} = React;
-var Input = React.createFactory(React.DOM.input);
+var Input = React.createFactory("input");
 
 
 union InputType {
