@@ -79,42 +79,6 @@ jsk-grid-offset(offset, columns = jsk-grid-columns)
   margin-left: jsk-grid-width * (margin-offset * offset + gutter-margin)
 
 
-// ## Configuration ####################################################
-
-/* ### Data: jsk-grid-module-width
- *
- * The size of the basic unit in the grid (a module). Gutter and column
- * sizes are derived from this unit.
- */
-jsk-grid-module-width = 60px
-
-/* ### Data: jsk-grid-gutter
- *
- * The spacing between each column in a grid.
- */
-jsk-grid-gutter = 20px
-
-/* ### Data: jsk-grid-columns
- * 
- * The total number of columns in the grid.
- */
-jsk-grid-columns = 12
-
-/* ### Data: jsk-grid-width
- *
- * The maximum size of the grid. If a percentage, the grid will be
- * automatically fluid.
- */
-jsk-grid-width = jsk-grid--size(jsk-grid-columns)
-
-/* ### Data: jsk-grid-min-width
- * 
- * The minimum width of the grid.
- */
-jsk-grid-min-width = 960px
-
-
-
 // ## Helpers ##########################################################
 
 /* ### Function: jsk-grid--size
