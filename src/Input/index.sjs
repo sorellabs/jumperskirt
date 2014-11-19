@@ -52,6 +52,9 @@ var TextInput = module.exports = React.createClass({
     // Builtin browser's autocomplete
     autoComplete: T.oneOf([AutoComplete.Default, AutoComplete.None]),
 
+    // Label for the input
+    label: T.string,
+
     // Placeholder for the input
     placeholder: T.string,
 
@@ -74,6 +77,7 @@ var TextInput = module.exports = React.createClass({
       placeholder: '',
       description: '',
       initialValue: '',
+      label: '',
       autocomplete: AutoComplete.Default,
       onChange: function(){ }
     }
@@ -96,7 +100,7 @@ var TextInput = module.exports = React.createClass({
 
     return (
       <div className={ classes }>
-        <label className="jsk-field-label" onClick={this._onLabelClicked}>{ this.props.placeholder }</label>
+        <label className="jsk-field-label" onClick={this._onLabelClicked}>{ this.props.label }</label>
         {
           Input(extend({
             ref: 'input',
