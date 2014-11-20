@@ -25,6 +25,6 @@
  * @module lib/index
  */
 module.exports = {
-  TextInput: require('./Input'),
+  TextInput: require('./components/TextInput'),
   React: require('react')
 }
