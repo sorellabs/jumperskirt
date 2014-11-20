@@ -67,6 +67,9 @@ var TextInput = module.exports = React.createClass({
     // The initial value for this field
     initialValue: T.string,
 
+    // Whether the input can be modified or not
+    readOnly: T.bool,
+
     // Fired whenever the value of the input changes
     onChange: T.func
   },
@@ -79,6 +82,7 @@ var TextInput = module.exports = React.createClass({
       initialValue: '',
       label: '',
       autocomplete: AutoComplete.None,
+      readOnly: false,
       onChange: function(){ }
     }
   },
@@ -95,6 +99,7 @@ var TextInput = module.exports = React.createClass({
       'jsk-field': true,
       'jsk-text-field': true,
       'jsk-focused': this.state.isFocused,
+      'jsk-non-editable': this.props.readOnly,
       'jsk-has-text': this.state.value !== '',
     }) + ' ' + this.props.classNames.join(' ');
 
@@ -107,6 +112,7 @@ var TextInput = module.exports = React.createClass({
             type: this.props.type,
             placeholder: this.props.placeholder,
             value: this.state.value,
+            readOnly: this.props.readOnly? 'readonly' : '',
             onChange: this._onInputChanged,
             onFocus: this._onFocused,
             onBlur: this._onBlurred
@@ -122,8 +128,10 @@ var TextInput = module.exports = React.createClass({
   },
 
   _onInputChanged: function(e) {
-    var value = e.target.value;
-    this.setValue(value);
+    if (!this.props.readOnly) {
+      var value = e.target.value;
+      this.setValue(value);
+    }
   },
   
   _onFocused: function(e) {
