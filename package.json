@@ -37,7 +37,7 @@
     "ink-docstrap": "git://github.com/robotlolita/docstrap",
     "hifive-spec": "~0.2.2",
     "uglify-js": "~2.4.15",
-    "sweet.js": "~0.7.1",
+    "sweet.js": "0.7.1",
     "hifive": "~0.4.0",
     "alright": "~1.1.0",
     "browserify": "~6.3.2",
