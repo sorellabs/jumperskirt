@@ -1,4 +1,4 @@
-// Copyright (c) 2014 Quildreen Motta
+// Copyright (c) 2014 Quildreen Motta <quildreen@gmail.com>
 //
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation files
@@ -19,13 +19,37 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+@import "./includes/colours"
+
 /**
- * The UI framework with frills, on top of Stylus and React
- *
- * @module lib/index
+ * Button definitions
  */
-module.exports = {
-  TextInput: require('./components/TextInput'),
-  Button: require('./components/Button'),
-  React: require('react')
+
+.jsk-button {
+    display: inline-block
+    padding: 1em 2em
+    color: jsk-base-faded-colour
+    transition: all 250ms ease-in-out
+    font-size: 1.2em
+    background: transparent
+    cursor: pointer
+
+    &:hover {
+        color: darken(jsk-base-faded-colour, 20%)
+    }
+    &:active {
+        background: clouds
+    }
+
+    &.jsk-primary {
+        color: jsk-base-colour
+        background: jsk-primary-accent-colour
+
+        &:hover {
+            background: lighten(jsk-primary-accent-colour, 10%)
+        }
+        &:active {
+            background: jsk-primary-colour
+        }
+    }
 }
