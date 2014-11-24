@@ -59,7 +59,10 @@ $(TEST_BLD)/%.js: $(TEST_DIR)/%.sjs
 
 
 # -- Tasks -------------------------------------------------------------
-all: $(TGT)
+node_modules: package.json
+	npm install
+
+all: node_modules $(TGT)
 
 bundle: dist/$(PACKAGE).umd.js
 
@@ -68,7 +71,7 @@ dev-bundle:
 
 minify: dist/$(PACKAGE).umd.min.js
 
-css:
+css: node_modules
 	mkdir -p $(STYLUS_BLD)
 	$(stylus) $(STYLUS_PATHS) $(STYLUS_OPTIONS) -o $(STYLUS_BLD) $(STYLUS_DIR)
 
