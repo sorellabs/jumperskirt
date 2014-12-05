@@ -8,7 +8,7 @@ module.exports = function(React) {
     value: String
   } deriving (Base, Cata)
   
-  var RadioGroup = module.exports = React.createClass({
+  return React.createClass({
   
     statics: {
       RadioItem: RadioItem

@@ -1,7 +1,7 @@
 module.exports = function(React) {
   var { PropTypes: T, addons: { classSet }} = React;
   
-  var Button = module.exports = React.createClass({
+  return React.createClass({
   
     propTypes: {
       // A list of additional classes for the button

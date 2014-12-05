@@ -28,7 +28,7 @@ module.exports = function(React) {
   }
   
   
-  var TextInput = module.exports = React.createClass({
+  return React.createClass({
   
     statics: {
       types: {
