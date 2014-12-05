@@ -56,9 +56,44 @@ module.exports = function(React) {
         value: this.props.initialValue
       }
     },
+
+    getValue: function() {
+      return this.state.value
+    },
+
+    setValue: function(newValue) {
+      var oldValue = this.getValue();
+      this.setState({ value: newValue });
+      this.props.onChange(newValue, oldValue);
+    },
+
+    reset: function() {
+      this.setValue(this.props.initialValue);
+    },
+
+    _onButtonClicked: function(value) {
+      var self = this;
+      return function() {
+        if (!self.props.readOnly)  self.setValue(value)
+      }
+    },
   
     renderRadioItem: function(item) {
-      
+      var classes = classSet({
+        'jsk-radio-item': true,
+        'active': item.value === this.state.value
+      });
+
+      return (
+        <div className={ classes } onClick={ this._onButtonClicked(item.value) }>
+          <div className="jsk-radio-item-button">
+            <div className="jsk-radio-item-fill" />
+          </div>
+          <div className="jsk-radio-item-label">
+            { item.label }
+          </div>
+        </div>
+      )
     },
   
     render: function() {
