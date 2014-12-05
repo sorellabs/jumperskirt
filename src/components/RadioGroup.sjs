@@ -12,7 +12,7 @@ module.exports = function(React) {
   
     statics: {
       RadioItem: RadioItem
-    }
+    },
   
     propTypes: {
       // A list of additional classes for the radio group
