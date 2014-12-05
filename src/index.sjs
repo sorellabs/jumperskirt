@@ -24,8 +24,9 @@
  *
  * @module lib/index
  */
-module.exports = {
-  TextInput: require('./components/TextInput'),
-  Button: require('./components/Button'),
-  React: require('react')
+module.exports = function(React) {
+  return {
+    TextInput: require('./components/TextInput')(React),
+    Button: require('./components/Button')(React),
+  }
 }
