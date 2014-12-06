@@ -1,0 +1,74 @@
+// Copyright (c) 2014 Quildreen Motta <quildreen@gmail.com>
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation files
+// (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge,
+// publish, distribute, sublicense, and/or sell copies of the Software,
+// and to permit persons to whom the Software is furnished to do so,
+// subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+.jsk-tab-group {
+    .jsk-tab-group-tabs {
+        position: relative
+        border-bottom: 1px solid jsk-input-border-colour
+        margin-bottom: 0.5em
+    }
+    .jsk-tab-active-line {
+        height: 5px
+        width: 0px
+        background: jsk-input-focus-colour
+        position: absolute
+        bottom: -3px
+        left: 0px
+        transition: all 250ms ease-in-out
+    }
+    .jsk-tab-button {
+        font-size: 1.4em
+        line-height: 2em
+        height: 2em
+        display: inline-block
+        color: jsk-base-faded-colour
+        padding: 0 1em
+        cursor: pointer
+
+        &.active {
+            color: jsk-primary-colour
+        }
+    }
+    .jsk-tab-group-content {
+        width: 100%
+        overflow: hidden
+        white-space: nowrap
+    }
+    .jsk-tab-group-container {
+        position: relative
+        left: 0px
+        transition: all 250ms ease-in-out
+    }
+    .jsk-tab-content {
+        width: 100%
+        opacity: 0
+        display: inline-block
+        vertical-align: top
+        transition: opacity 250ms ease-out
+
+        &.active {
+            opacity: 1
+        }
+    }
+    
+    
+
+}
