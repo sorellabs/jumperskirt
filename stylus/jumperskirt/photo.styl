@@ -32,6 +32,9 @@
         cursor: pointer
         position: relative
         vertical-align: top
+        overflow: hidden
+        opacity: 1
+        transition: all 250ms ease-in-out
     }
     .jsk-photo-label {
         text-transform: uppercase
@@ -74,8 +77,6 @@
         border-color: jsk-input-focus-colour
     }
     .jsk-photo-current {
-        overflow: hidden
-
         img {
             width: 100%
             height: auto
@@ -86,6 +87,11 @@
     }
 
     &.jsk-non-editable {
+        .jsk-photo-add {
+            width: 0px
+            margin: 0px
+            border-width: 0
+        }
         .jsk-item {
             cursor: default
         }
