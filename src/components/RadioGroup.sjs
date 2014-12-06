@@ -78,14 +78,14 @@ module.exports = function(React) {
       }
     },
   
-    renderRadioItem: function(item) {
+    renderRadioItem: function(item, i) {
       var classes = classSet({
         'jsk-radio-item': true,
         'active': item.value === this.state.value
       });
 
       return (
-        <div className={ classes } onClick={ this._onButtonClicked(item.value) }>
+        <div key={ i } className={ classes } onClick={ this._onButtonClicked(item.value) }>
           <div className="jsk-radio-item-button">
             <div className="jsk-radio-item-fill" />
           </div>
