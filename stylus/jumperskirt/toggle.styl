@@ -29,29 +29,6 @@
     border-bottom: 1px solid jsk-input-border-colour
     padding-bottom: 1em
 
-    .jsk-toggle-container {
-        clearfix()
-        margin-bottom: 0.5em
-    }
-    .jsk-label-panel, .jsk-toggle-panel {
-        display: inline-block
-        height: 2em
-        line-height: 2em
-        float: left
-    }
-    .jsk-label-panel {
-        width: 70%
-    }
-    .jsk-toggle-panel {
-        width: 30%
-        text-align: right
-    }
-    .jsk-field-label {
-        font-size: 1.2em
-        text-transform: initial
-        font-weight: normal
-        color: jsk-base-text-colour
-    }
     input {
         display: none
     }
@@ -64,7 +41,7 @@
         cursor: pointer
         display: inline-block
         transition: all 250ms ease-in-out
-        margin-right: 0.3em
+        margin: 0 0.3em
 
         &:before {
             content: "✖"
@@ -113,5 +90,31 @@
         .jsk-toggle-button {
             cursor: default
         }
+    }
+}
+
+.jsk-toggle-list {
+    .jsk-toggle-container {
+        clearfix()
+        margin-bottom: 0.5em
+    }
+    .jsk-label-panel, .jsk-toggle-panel {
+        display: inline-block
+        height: 2em
+        line-height: 2em
+        float: left
+    }
+    .jsk-label-panel {
+        width: 70%
+    }
+    .jsk-toggle-panel {
+        width: 30%
+        text-align: right
+    }
+    .jsk-field-label {
+        font-size: 1.2em
+        text-transform: initial
+        font-weight: normal
+        color: jsk-base-text-colour
     }
 }
