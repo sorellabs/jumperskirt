@@ -62,7 +62,7 @@ $(TEST_BLD)/%.js: $(TEST_DIR)/%.sjs
 node_modules: package.json
 	npm install
 
-all: node_modules $(TGT)
+all: $(TGT)
 
 bundle: dist/$(PACKAGE).umd.js
 
