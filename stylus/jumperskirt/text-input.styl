@@ -41,7 +41,7 @@
         padding: 0 0.5em
         font-size: 1.2em
         transition: all 250ms ease-in-out
-        transition-property: border, color
+        transition-property: border, color, padding
     }
 
     .jsk-field-label {
@@ -59,6 +59,12 @@
             color: jsk-input-focus-colour
             border-color: jsk-input-focus-colour
             border-width: 2px
+        }
+    }
+    &.jsk-non-editable {
+        input {
+            border-color: transparent
+            padding: 0
         }
     }
 
