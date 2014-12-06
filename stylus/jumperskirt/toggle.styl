@@ -1,0 +1,117 @@
+@import "./field"
+
+// Copyright (c) 2014 Quildreen Motta <quildreen@gmail.com>
+//
+// Permission is hereby granted, free of charge, to any person
+// obtaining a copy of this software and associated documentation files
+// (the "Software"), to deal in the Software without restriction,
+// including without limitation the rights to use, copy, modify, merge,
+// publish, distribute, sublicense, and/or sell copies of the Software,
+// and to permit persons to whom the Software is furnished to do so,
+// subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+/**
+ * Toggle compontns
+ */
+
+.jsk-toggle-field {
+    border-bottom: 1px solid jsk-input-border-colour
+    padding-bottom: 1em
+
+    .jsk-toggle-container {
+        clearfix()
+        margin-bottom: 0.5em
+    }
+    .jsk-label-panel, .jsk-toggle-panel {
+        display: inline-block
+        height: 2em
+        line-height: 2em
+        float: left
+    }
+    .jsk-label-panel {
+        width: 70%
+    }
+    .jsk-toggle-panel {
+        width: 30%
+        text-align: right
+    }
+    .jsk-field-label {
+        font-size: 1.2em
+        text-transform: initial
+        font-weight: normal
+        color: jsk-base-text-colour
+    }
+    input {
+        display: none
+    }
+    .jsk-toggle-button {
+        position: relative
+        width: 4em
+        height: 1.4em
+        background: jsk-base-faded-colour
+        border-radius: 5px
+        cursor: pointer
+        display: inline-block
+        transition: all 250ms ease-in-out
+        margin-right: 0.3em
+
+        &:before {
+            content: "✖"
+            color: clouds
+            font-weight: 600
+            font-size: 1.2em
+            position: absolute
+            display: block
+            top: 0px
+            right: 0px
+            line-height: 1.2em
+            width: 2em
+            text-align: center
+        }
+    }
+    .jsk-toggle-bullet {
+        position: absolute
+        height: 2em
+        width: 2em
+        background: jsk-base-colour
+        border-radius: 100%
+        border: 3px solid jsk-base-faded-colour
+        left: -0.3em
+        right: auto
+        z-index: 5
+        top: -0.3em
+        transition: all 250ms ease-in-out
+    }
+    &.active {
+        .jsk-toggle-button {
+            background: jsk-primary-colour
+
+            &:before {
+                right: auto
+                left: 0px
+                content: "✔"
+            }
+        }
+        .jsk-toggle-bullet {
+            border-color: jsk-primary-colour
+            left: auto
+            right: -0.3em
+        }
+    }
+    &.jsk-non-editable {
+        .jsk-toggle-button {
+            cursor: default
+        }
+    }
+}
