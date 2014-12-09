@@ -104,5 +104,5 @@ Released under the [MIT licence](https://github.com/robotlolita/jumperskirt/blob
 [es5-shim]: https://github.com/kriskowal/es5-shim
 [docs]: http://robotlolita.github.io/jumperskirt
 <!-- [release: https://github.com/robotlolita/jumperskirt/releases/download/v$VERSION/jumperskirt-$VERSION.tar.gz] -->
-[release]: https://github.com/robotlolita/jumperskirt/releases/download/v0.1.2/jumperskirt-0.1.2.tar.gz
+[release]: https://github.com/robotlolita/jumperskirt/releases/download/v0.1.4/jumperskirt-0.1.4.tar.gz
 <!-- [/release] -->
