@@ -7,6 +7,9 @@ module.exports = function(React) {
       // A list of additional classes for the input
       classNames: T.arrayOf(T.string),
 
+      // Name for the input
+      name: T.string.isRequired,
+      
       // Label for the input
       label: T.string,
 
@@ -50,7 +53,8 @@ module.exports = function(React) {
 
     getInitialState: function() {
       return {
-        value: this.props.currentImage
+        value: this.props.currentImage,
+        busy: false
       }
     },
 
@@ -66,12 +70,15 @@ module.exports = function(React) {
       var files = this.refs.input.getDOMNode();
       var form  = this.refs.form.getDOMNode();
       var self  = this;
-      
+
+      this.setState({ busy: true });
       this.props.onUpload(files, form).fork(
         function(error) {
+          self.setState({ busy: false });
           self.onError(error)
         },
         function(value) {
+          self.setState({ busy: false });
           self.setValue(Maybe.Just(value))
         }
       );
@@ -94,6 +101,7 @@ module.exports = function(React) {
         'jsk-field': true,
         'jsk-photo-field': true,
         'jsk-non-editable': this.props.readOnly,
+        'jsk-photo-busy': this.state.busy,
         'jsk-has-photo': this.state.value.isJust
       }) + ' ' + this.props.classNames.join(' ');
 
@@ -113,7 +121,9 @@ module.exports = function(React) {
               <div className="jsk-photo-label">{ this.props.addLabel }</div>
               <div className={ "jsk-photo-icon " + this.props.addIconClass } />
               <form method="POST" enctype="multipart/form-data" ref="form">
-                <input type="file" ref="input" onChange={ this._onFileChanged } />
+                <input type="file" ref="input"
+                       name={ this.props.name }
+                       onChange={ this._onFileChanged } />
               </form>
             </li>
             { this.state.value.map(this.renderCurrent).getOrElse(null) }
