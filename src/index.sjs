@@ -26,7 +26,12 @@
  */
 module.exports = function(React) {
   return {
-    TextInput: require('./components/TextInput')(React),
-    Button: require('./components/Button')(React),
+    TextInput  : require('./components/TextInput')(React),
+    Button     : require('./components/Button')(React),
+    Photo      : require('./components/Photo')(React),
+    RadioGroup : require('./components/RadioGroup')(React),
+    TabGroup   : require('./components/TabGroup')(React),
+    Toggle     : require('./components/Toggle')(React),
+    Progress   : require('./components/Progress')(React)
   }
 }
