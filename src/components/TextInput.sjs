@@ -74,7 +74,7 @@ module.exports = function(React) {
 
       // A function ran when the value has changed, before propagating the changes
       // for validating/normalising the input. Must return a Validation[α, β].
-      validation: T.func
+      validation: T.func,
 
       // Fired whenever the value of the input changes
       onChange: T.func
