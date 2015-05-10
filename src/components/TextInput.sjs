@@ -148,12 +148,7 @@ module.exports = function(React) {
     _onInputChanged: function(e) {
       if (!this.props.readOnly) {
         var value = e.target.value;
-        this.props.validation(value).cata({
-          Failure: this._onInvalidValue,
-          Success: function(data) {
-            this.setValue(data)
-          }.bind(this)
-        })
+        this.setValue(value)
       }
     },
 
@@ -171,8 +166,13 @@ module.exports = function(React) {
 
     setValue: function(newValue) {
       var oldValue = this.state.value;
-      this.setState({ value: newValue });
-      this.props.onChange(newValue, oldValue)
+      this.props.validation(newValue).cata({
+        Failure: this._onInvalidValue,
+        Success: function(data) {
+          this.setState({ value: data, error: Maybe.Nothing() })
+          this.props.onChange(newValue, oldValue)
+        }.bind(this)
+      })
     },
 
     getValue: function() {
