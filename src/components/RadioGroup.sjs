@@ -1,45 +1,45 @@
 module.exports = function(React) {
   var { Base, Cata } = require('adt-simple');
-  
+
   var { PropTypes: T, addons: { classSet }} = React;
-  
+
   data RadioItem {
     label: String,
     value: String
   } deriving (Base, Cata)
-  
+
   return React.createClass({
-  
+
     statics: {
       RadioItem: RadioItem
     },
-  
+
     propTypes: {
       // A list of additional classes for the radio group
       classNames: T.arrayOf(T.string),
-  
+
       // Name of the radio group
       name: T.string.isRequired,
-  
+
       // Items in the Radio Group
       items: T.arrayOf(T.instanceOf(RadioItem)).isRequired,
-  
+
       // Initial value for the radio group
       initialValue: T.string,
-  
+
       // Whether the radio group can be modified or not
       readOnly: T.bool,
-  
+
       // Label for the field
       label: T.string,
-  
+
       // Description of the value expected in the field
       description: T.string,
-  
+
       // Fired whenever the value of the radio group changes
       onChange: T.func
     },
-  
+
     getDefaultProps: function() {
       return {
         classNames: [],
@@ -50,7 +50,7 @@ module.exports = function(React) {
         onChange: function(){ }
       }
     },
-  
+
     getInitialState: function() {
       return {
         value: this.props.initialValue
@@ -77,7 +77,7 @@ module.exports = function(React) {
         if (!self.props.readOnly)  self.setValue(value)
       }
     },
-  
+
     renderRadioItem: function(item, i) {
       var classes = classSet({
         'jsk-radio-item': true,
@@ -95,14 +95,14 @@ module.exports = function(React) {
         </div>
       )
     },
-  
+
     render: function() {
       var classes = classSet({
         'jsk-field': true,
         'jsk-radio-group': true,
         'jsk-non-editable': this.props.readOnly
       }) + ' ' + this.props.classNames.join(' ');
-  
+
       return (
         <div className={ classes }>
           <input type="hidden" name={ this.props.name } value={ this.state.value } />
@@ -114,6 +114,6 @@ module.exports = function(React) {
         </div>
       )
     }
-    
+
   });
 }

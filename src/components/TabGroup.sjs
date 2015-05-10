@@ -12,13 +12,13 @@ module.exports = function(React) {
   function first(xs) {
     return xs.length > 0? Maybe.Just(xs[0]) : Maybe.Nothing()
   }
-  
+
   return React.createClass({
 
     statics: {
       Tab: Tab
     },
-    
+
     propTypes: {
       // A list of additional classes for the radio group
       classNames: T.arrayOf(T.string),
@@ -31,7 +31,7 @@ module.exports = function(React) {
 
       // Whether the tabs are disabled
       disabled: T.bool,
-      
+
       // Fired when a new tab is selected
       onChange: T.func
     },
@@ -85,7 +85,7 @@ module.exports = function(React) {
         container.style.left = '100%'
       });
     },
-    
+
     _onTabClicked: function(tab) {
       var self = this;
 
@@ -120,7 +120,7 @@ module.exports = function(React) {
         'jsk-tab-button': true,
         'active': this.isCurrent(tab)
       });
-      
+
       return (
         <div key={ i } className={ classes } onClick={ this._onTabClicked(tab) }>
           <div className="jsk-tab-label">{ tab.label }</div>
@@ -151,5 +151,5 @@ module.exports = function(React) {
     }
 
   })
-  
+
 }

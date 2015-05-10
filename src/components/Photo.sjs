@@ -9,7 +9,7 @@ module.exports = function(React) {
 
       // Name for the input
       name: T.string.isRequired,
-      
+
       // Label for the input
       label: T.string,
 
@@ -65,7 +65,7 @@ module.exports = function(React) {
         this.props.onChange(newValue, oldValue);
       }
     },
-    
+
     _onFileChanged: function(ev) {
       var files = this.refs.input.getDOMNode();
       var form  = this.refs.form.getDOMNode();
@@ -139,5 +139,5 @@ module.exports = function(React) {
       )
     }
   })
-  
+
 }

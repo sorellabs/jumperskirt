@@ -24,7 +24,7 @@ module.exports = function(React) {
         Progress: Progress
       }
     },
-    
+
     propTypes: {
       // A list of additional classes for the progress bar
       classNames: T.arrayOf(T.string),
