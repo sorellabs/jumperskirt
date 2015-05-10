@@ -1,6 +1,8 @@
 module.exports = function(React) {
   var extend = require('xtend');
   var { Extractor, Eq } = require('adt-simple');
+  var { Success, Failure } = require('data.validation');
+  var Maybe = require('data.maybe');
 
   var { PropTypes: T, addons: { classSet }} = React;
   var Input = React.createFactory("input");
@@ -70,6 +72,10 @@ module.exports = function(React) {
       // Whether the input can be modified or not
       readOnly: T.bool,
 
+      // A function ran when the value has changed, before propagating the changes
+      // for validating/normalising the input. Must return a Validation[α, β].
+      validation: T.func
+
       // Fired whenever the value of the input changes
       onChange: T.func
     },
@@ -83,13 +89,15 @@ module.exports = function(React) {
         label: '',
         autocomplete: AutoComplete.None,
         readOnly: false,
-        onChange: function(){ }
+        onChange: function(){ },
+        validation: function(value){ return Success(value) }
       }
     },
 
     getInitialState: function() {
       return {
         value: this.props.initialValue,
+        error: Maybe.Nothing(),
         isFocused: false
       }
     },
@@ -101,6 +109,7 @@ module.exports = function(React) {
         'jsk-focused': this.state.isFocused,
         'jsk-non-editable': this.props.readOnly,
         'jsk-has-text': this.state.value !== '',
+        'jsk-invalid': this.state.error.isJust
       }) + ' ' + this.props.classNames.join(' ');
 
       return (
@@ -118,7 +127,16 @@ module.exports = function(React) {
               onBlur: this._onBlurred
             }, this.props.autocomplete.toProperties()))
           }
+          { this.state.error.map(this._renderError).getOrElse(null) }
           <div className="jsk-field-description">{ this.props.description }</div>
+        </div>
+      )
+    },
+
+    _renderError: function(error) {
+      return (
+        <div className="jsk-field-validation-failure">
+          { error }
         </div>
       )
     },
@@ -130,8 +148,17 @@ module.exports = function(React) {
     _onInputChanged: function(e) {
       if (!this.props.readOnly) {
         var value = e.target.value;
-        this.setValue(value);
+        this.props.validation(value).cata({
+          Failure: this._onInvalidValue,
+          Success: function(data) {
+            this.setValue(data)
+          }.bind(this)
+        })
       }
+    },
+
+    _onInvalidValue: function(error) {
+      this.setState({ error: Maybe.Just(error) })
     },
 
     _onFocused: function(e) {
