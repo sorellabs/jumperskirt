@@ -1,0 +1,12 @@
+#+STARTUP: content
+#+TODO: TODO WORKING | DONE DROPPED
+#+TYP_TODO: FEATURE BUG TODO | DONE
+
+* 1.0.0
+** FEATURE Input validation and transformation
+** FEATURE Typography
+** FEATURE Slider component
+** FEATURE Tag component
+** FEATURE Auto-adjustable text fields
+** FEATURE Search component
+** FEATURE Selectbox component
