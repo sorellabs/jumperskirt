@@ -1,0 +1,68 @@
+//----------------------------------------------------------------------
+//
+// This source file is part of the JumperSkirt project.
+//
+// Copyright (C) 2014-2016 Quildreen Motta.
+// Licensed under the MIT licence.
+//
+// See LICENCE for licence information.
+// See CONTRIBUTORS for the list of contributors to the project.
+//
+//----------------------------------------------------------------------
+
+// # module: jumperskirt/text-input
+//
+// Default style for text inputs
+
+@import "./field"
+
+.jsk-text-field {
+    position: relative
+
+    input {
+        background: transparent
+        box-shadow: none
+        border: none
+        border-bottom: 1px solid jsk-input-border-colour
+        color: jsk-input-text-colour
+        display: block
+        width: 100%
+        height: 2em
+        line-height: 2em
+        padding: 0 0.5em
+        font-size: 1.2em
+        transition: all 250ms ease-in-out
+        transition-property: border, color, padding
+    }
+
+    .jsk-field-label {
+        opacity: 0
+        transition: opacity 250ms ease-in-out
+    }
+
+    &.jsk-has-text {
+        .jsk-field-label {
+            opacity: 1
+        }
+    }
+    &.jsk-focused:not(.jsk-non-editable) {
+        input {
+            color: jsk-input-focus-colour
+            border-color: jsk-input-focus-colour
+            border-width: 2px
+        }
+    }
+    &.jsk-non-editable {
+        input {
+            border-color: transparent
+            padding: 0
+        }
+    }
+    &.jsk-invalid {
+        input {
+            color: jsk-input-error-colour;
+            border-color: jsk-input-error-colour !important;
+        }
+    }
+
+}

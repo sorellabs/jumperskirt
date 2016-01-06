@@ -39,8 +39,8 @@ small, .small {
 
 .lead {
     font-size: 120%
-    color: jsk-base-faded-colour
-    font-family: jsk-heading-font
+    color: jsk-base-faded-text-colour
+    font-family: jsk-family-heading
 }
 
 cite {
@@ -51,16 +51,16 @@ blockquote {
     margin: 0 0 jsk-line-height-base (jsk-line-height-base * 2)
     border-left: 8px solid jsk-primary-accent-colour
     padding: 0.3em 1em
-    color: jsk-base-faded-colour
+    color: jsk-base-faded-text-colour
 
     .source {
-        color: lighten(jsk-base-faded-colour, 30)
+        color: lighten(jsk-base-faded-text-colour, 30)
 
         &:before {
             content: "— "
         }
         cite {
-            color: lighten(jsk-base-faded-colour, 15)
+            color: lighten(jsk-base-faded-text-colour, 15)
         }
     }
 }
@@ -109,10 +109,11 @@ ul.unstyled, ol.unstyled {
 
 // -- Headings and titles ----------------------------------------------
 h1, h2, h3, h4, h5, h6 {
-    font-family: jsk-heading-font
+    font-family: jsk-family-heading
     line-height: 100%
+    letter-spacing: jsk-heading-letter-spacing
     margin: jsk-line-height-base 0 (jsk-line-height-base / 2) 0
-    font-weight: 800
+    font-weight: jsk-heading-weight
     color: jsk-base-heading-colour
 }
 

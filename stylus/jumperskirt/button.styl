@@ -1,0 +1,42 @@
+//----------------------------------------------------------------------
+//
+// This source file is part of the JumperSkirt project.
+//
+// Copyright (C) 2014-2016 Quildreen Motta.
+// Licensed under the MIT licence.
+//
+// See LICENCE for licence information.
+// See CONTRIBUTORS for the list of contributors to the project.
+//
+//----------------------------------------------------------------------
+
+@import "./includes/colours"
+
+.jsk-button {
+    display: inline-block
+    padding: 1em 2em
+    color: jsk-base-faded-colour
+    transition: all 250ms ease-in-out
+    font-size: 1.2em
+    background: transparent
+    cursor: pointer
+
+    &:hover {
+        color: darken(jsk-base-faded-text-colour, 20%)
+    }
+    &:active {
+        background: clouds
+    }
+
+    &.jsk-primary {
+        color: jsk-base-colour
+        background: jsk-primary-accent-colour
+
+        &:hover {
+            background: lighten(jsk-primary-accent-colour, 10%)
+        }
+        &:active {
+            background: jsk-primary-colour
+        }
+    }
+}
