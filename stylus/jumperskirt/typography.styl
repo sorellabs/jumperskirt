@@ -1,0 +1,141 @@
+//----------------------------------------------------------------------
+//
+// This source file is part of the JumperSkirt project.
+//
+// Copyright (C) 2014-2016 Quildreen Motta.
+// Licensed under the MIT licence.
+//
+// See LICENCE for licence information.
+// See CONTRIBUTORS for the list of contributors to the project.
+//
+//----------------------------------------------------------------------
+
+// # module: jumperskirt/typography
+
+
+// -- Text -------------------------------------------------------------
+body {
+    background: jsk-base-colour
+    font-family: jsk-family-base
+    line-height: jsk-line-height-base
+    font-size: jsk-font-size-base
+}
+
+p {
+    margin: (jsk-line-height-base / 2) 0 (jsk-line-height-base * 1.3) 0
+}
+
+strong {
+    font-weight: bold
+}
+
+em {
+    font-style: italic
+}
+
+small, .small {
+    font-size: jsk-font-size-small
+}
+
+.lead {
+    font-size: 120%
+    color: jsk-base-faded-colour
+    font-family: jsk-heading-font
+}
+
+cite {
+    font-style: normal
+}
+
+blockquote {
+    margin: 0 0 jsk-line-height-base (jsk-line-height-base * 2)
+    border-left: 8px solid jsk-primary-accent-colour
+    padding: 0.3em 1em
+    color: jsk-base-faded-colour
+
+    .source {
+        color: lighten(jsk-base-faded-colour, 30)
+
+        &:before {
+            content: "— "
+        }
+        cite {
+            color: lighten(jsk-base-faded-colour, 15)
+        }
+    }
+}
+
+
+// -- Lists ------------------------------------------------------------
+ul, ol {
+    margin: 0 0 jsk-line-height-base (jsk-line-height-base * 2)
+    padding: 0
+    
+    li {
+        margin-bottom: (jsk-line-height-base / 2)
+    }
+}
+
+ul ul, ul ol, ol ul, ol ol {
+    margin-bottom: 0
+}
+
+ul {
+    list-style: disc
+}
+
+ul ul, ol ul {
+    list-style: circle
+}
+
+ul ul ul, ol ul ul, ol ol ul, ul ol ul {
+    list-style: square
+}
+
+ol {
+    list-style: decimal
+}
+
+ul.unstyled, ol.unstyled {
+    margin: 0
+    padding: 0
+    list-style: none
+
+    & > li {
+        margin-bottom: 0
+    }
+}
+
+
+// -- Headings and titles ----------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+    font-family: jsk-heading-font
+    line-height: 100%
+    margin: jsk-line-height-base 0 (jsk-line-height-base / 2) 0
+    font-weight: 800
+    color: jsk-base-heading-colour
+}
+
+h1 {
+    font-size: 2.5em
+}
+
+h2 {
+    font-size: 2.3em
+}
+
+h3 {
+    font-size: 2em
+}
+
+h4 {
+    font-size: 1.6em
+}
+
+h5 {
+    font-size: 1.4em
+}
+
+h6 {
+    font-size: 1.3em
+}

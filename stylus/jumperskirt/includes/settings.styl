@@ -1,0 +1,86 @@
+//----------------------------------------------------------------------
+//
+// This source file is part of the JumperSkirt project.
+//
+// Copyright (C) 2014-2016 Quildreen Motta.
+// Licensed under the MIT licence.
+//
+// See LICENCE for licence information.
+// See CONTRIBUTORS for the list of contributors to the project.
+//
+//----------------------------------------------------------------------
+
+// # module: jumperskirt/includes/settings
+//
+// Default settings for the JumperSkirt framework.
+
+// -- Dependencies -----------------------------------------------------
+@import "./colours"
+
+
+// -- Base colours -----------------------------------------------------
+
+// The base colour for backgrounds, in general.
+jsk-base-colour = #fafafa;
+
+// The base colour for texts, in general.
+jsk-base-text-colour = #424242;
+
+// Complimentary colour for text that should be in less evidence.
+jsk-base-faded-text-colour = concrete;
+
+// Colour used for heading elements.
+jsk-base-heading-colour = asbestos;
+
+// Colour used for the main elements in the page (buttons, actionables, etc).
+jsk-primary-colour = belize-hole;
+
+// Complimentary accent colour for the main elements in the page
+jsk-primary-accent-colour = petermann;
+
+// Colour used for link elements
+jsk-link-colour = jsk-primary-colour;
+
+// Colour used for link elements, when hovered
+jsk-link-hover-colour = jsk-primary-accent-colour;
+
+
+// -- Typography -------------------------------------------------------
+
+jsk-family-serif = "Lora", Georgia, serif;
+jsk-family-sans-serif = "Source Sans Pro", Helvetica, sans-serif;
+jsk-family-monospace = "Source Code Pro", monospace;
+jsk-family-base = jsk-sans-serif-font
+jsk-family-heading = "Raleway", sans-serif;
+
+
+// Generic font sizes
+jsk-font-size-xxs = 10px
+jsk-font-size-xs = 12px
+jsk-font-size-small = 14px
+jsk-font-size-base = 16px
+jsk-font-size-large = 20px
+jsk-font-size-xl = 24px
+jsk-font-size-xxl = 32px
+
+jsk-line-height-base = 1.4em
+
+
+// -- Default component colours ----------------------------------------
+
+jsk-input-text-colour = jsk-base-text-colour
+jsk-input-placeholder-colour = jsk-base-faded-colour
+jsk-input-label-colour = jsk-base-faded-colour
+jsk-input-border-colour = silver
+jsk-input-description-colour = asbestos
+jsk-input-focus-colour = jsk-primary-accent-colour
+jsk-input-error-colour = alizarin
+
+
+// -- Grid -------------------------------------------------------------
+
+jsk-grid-module-width = 60px
+jsk-grid-gutter = 20px
+jsk-grid-columns = 12
+jsk-grid-width = jsk-grid--size(jsk-grid-columns)
+jsk-grid-min-width = 960px
