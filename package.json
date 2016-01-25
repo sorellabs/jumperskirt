@@ -1,6 +1,6 @@
 {
   "name": "jumperskirt",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "description": "The UI framework with frills, on top of React and Stylus.",
   "main": "./index.js",
   "scripts": {

@@ -90,7 +90,8 @@ module.exports = function(React) {
       var self = this;
 
       return function() {
-        self.setState({ current: Maybe.Just(tab) })
+        self.setState({ current: Maybe.Just(tab) });
+        self.props.onChange(tab);
       }
     },
 
