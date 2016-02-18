@@ -10,9 +10,10 @@
 //
 //----------------------------------------------------------------------
 
-var classes = require('classnames');
+module.exports = (React) => {
+  var Button = require('./Button')(React);
 
-module.exports = (React) => ({ classNames, onClick, children }) =>
-  <div className={ classes('jsk-button', classNames) } onCick={ onClick }>
-    <div className="jsk-button-text">{ children }</div>
-  </div>
+  return (props) =>
+    <Button classNames={ ['jsk-primary', ...(props.classNames || [])] }
+            {...props} />;
+};
