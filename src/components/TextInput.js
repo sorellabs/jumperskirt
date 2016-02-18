@@ -12,6 +12,7 @@
 
 module.exports = (React) => {
   var classNames = require('classnames');
+  var { sanitise } = require('./utils/classes');
   var { Success, Failure } = require('data.validation');
   var Maybe = require('data.maybe');
   var Field = require('./Field');
@@ -37,7 +38,7 @@ module.exports = (React) => {
       }, this.props.classNames);
 
       return (
-        <Field kind="jsk-text-field">
+        <Field kind={"jsk-text-field jsk-field-type-" + sanitise(this.props.type)}>
           <label className="jsk-field-label" onClick={ ::this._onLabelClicked }>
             { this.props.label }
           </label>
