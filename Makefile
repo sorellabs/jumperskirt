@@ -43,7 +43,7 @@ compile/js: $(SRC)
 	$(babel) --source-map inline --out-file $@ $<
 
 %/main.bundle.js: %/main.js
-	$(browserify) $< --outfile $@
+	$(browserify) --debug $< > $@
 
 
 
