@@ -1,4 +1,7 @@
 node_modules/
 *.tern-port
 css/
-lib/
+/index.js
+/components/
+test/**/*.css
+test/**/*.js

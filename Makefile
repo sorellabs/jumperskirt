@@ -4,6 +4,7 @@
 bin := $(shell npm bin)
 babel := $(bin)/babel
 stylus := $(bin)/stylus
+browserify := $(bin)/browserify
 
 
 # -- [ CONFIGURATION ] -------------------------------------------------
@@ -23,20 +24,28 @@ TEST_JS_TGT := ${TEST_JS_SRC:%.es6=%.js}
 TEST_STYL_SRC := $(shell find test/ -name '*.styl')
 TEST_STYL_TGT := ${TEST_STYL_SRC:%.styl=%.css}
 
+BUNDLE_SRC := $(shell find test/ -name 'main.js')
+BUNDLE_TGT := ${BUNDLE_SRC:%/main.js=%/main.bundle.js}
+
 
 # -- [ COMPILATION ] ---------------------------------------------------
 compile/stylus: $(STYLUS_SRC)
 	mkdir -p $(STYLUS_BLD)
 	$(stylus) $(STYLUS_PATHS) $$STYLUS_OPTIONS -o $(STYLUS_BLD) $(STYLUS_DIR)
 
-$(TEST_STYL_TGT)/%.css: $(TEST_STYL_SRC)/%.styl
+%.css: %.styl
 	$(stylus) $(STYLUS_PATHS) -I stylus -o $@ $<
 
 compile/js: $(SRC)
 	$(babel) src --source-map inline --out-dir .
 
-$(TEST_JS_TGT)/%.js: $(TEST_JS_SRC)/%.es6
+%.js: %.es6
 	$(babel) --source-map inline --out-file $@ $<
+
+%/main.bundle.js: %/main.js
+	$(browserify) $< --outfile $@
+
+
 
 node_modules: package.json
 	npm install
@@ -61,7 +70,7 @@ watch-stylus:
 
 build-js: node_modules compile/js
 
-build-test: compile/stylus compile/js $(TEST_JS_TGT) $(TEST_STYL_TGT)
+build-test: compile/stylus compile/js $(TEST_JS_TGT) $(TEST_STYL_TGT) $(BUNDLE_TGT)
 
 clean: $(STYLUS_TGT) $(TGT)
 	rm -r $(STYLUS_TGT) $(TGT) core
@@ -69,4 +78,4 @@ clean: $(STYLUS_TGT) $(TGT)
 test:
 	exit 1
 
-.PHONY: compile/stylus help build-stylus build-js watch-stylus clean
+.PHONY: compile/stylus compile/js help build-stylus build-js watch-stylus clean
