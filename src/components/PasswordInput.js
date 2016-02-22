@@ -13,7 +13,7 @@
 module.exports = (React) => {
   var TextInput = require('./TextInput')(React);
 
-  return (
+  return (props) => (
     <TextInput {...props} type="password" />
   );
 };

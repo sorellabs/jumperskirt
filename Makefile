@@ -42,7 +42,7 @@ compile/js: $(SRC)
 %.js: %.es6
 	$(babel) --source-map inline --out-file $@ $<
 
-%/main.bundle.js: %/main.js
+%/main.bundle.js: %/main.js $(TGT)
 	$(browserify) --debug $< > $@
 
 
@@ -74,6 +74,7 @@ build-test: compile/stylus compile/js $(TEST_JS_TGT) $(TEST_STYL_TGT) $(BUNDLE_T
 
 clean: $(STYLUS_TGT) $(TGT)
 	rm -r $(STYLUS_TGT) $(TGT) core
+	rm $(TEST_JS_TGT) $(TEST_STYL_TGT) $(BUNDLE_TGT)
 
 test:
 	exit 1

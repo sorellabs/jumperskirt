@@ -11,11 +11,13 @@
 //----------------------------------------------------------------------
 
 module.exports = (React) => {
+  var Field = require('./Field')(React);
+
   var classNames = require('classnames');
   var { sanitise } = require('./utils/classes');
   var { Success, Failure } = require('data.validation');
   var Maybe = require('data.maybe');
-  var Field = require('./Field');
+  var T = React.PropTypes;
 
 
   class TextInput extends React.Component {
@@ -42,19 +44,15 @@ module.exports = (React) => {
           <label className="jsk-field-label" onClick={ ::this._onLabelClicked }>
             { this.props.label }
           </label>
-          {
-            Input({
-              ref: 'input',
-              type: this.props.type,
-              placeholder: this.props.placeholder,
-              value: this.state.value,
-              readOnly: this.props.readOnly? 'readonly' : '',
-              onChange: this._onInputChanged,
-              onFocus: this._onFocused,
-              onBlur: this._onBlurred,
-              autocomplete: this.props.autoComplete
-            })
-          }
+          <input ref          = "input"
+                 type         = { this.props.type }
+                 placeholder  = { this.props.placeholder }
+                 value        = { this.state.value }
+                 readOnly     = { this.props.readOnly? 'readonly' : '' }
+                 onChange     = { ::this._onInputChanged }
+                 onFocus      = { ::this._onFocused }
+                 onBlur       = { ::this._onBlurred }
+                 autoComplete = { this.props.autoComplete } />
           {
             this.state.error.map(::this._renderError).getOrElse(null)
           }

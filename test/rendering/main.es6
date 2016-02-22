@@ -34,6 +34,11 @@ const Page = (props) =>
                  placeholder="Placeholder"
                  description="Regular text input" />
 
+    </div>;
+
+ReactDOM.render(<Page />, document.querySelector('#main'));
+
+/*
       <TextInput label="Read-Only"
                  initialValue="The Value" />
 
@@ -46,6 +51,4 @@ const Page = (props) =>
       <PasswordInput label="Password" />
 
       <h2>Buttons</h2>
-    </div>;
-
-ReactDOM.render(<Page />, document.querySelector('#main'));
+*/
