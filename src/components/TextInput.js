@@ -70,7 +70,7 @@ module.exports = (React) => {
         <div className="jsk-field-validation-failure">
           { error }
         </div>
-      )
+      );
     }
 
 
