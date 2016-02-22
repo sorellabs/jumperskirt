@@ -36,11 +36,12 @@ module.exports = (React) => {
         'jsk-focused'      : this.state.isFocused,
         'jsk-non-editable' : this.props.readOnly,
         'jsk-has-text'     : this.state.value !== '',
-        'jsk-invalid'      : this.state.error.isJust
-      }, this.props.classNames);
+        'jsk-invalid'      : this.state.error.isJust,
+        'jsk-text-field'   : true,
+      }, this.props.classNames, 'jsk-field-type-' + this.props.type);
 
       return (
-        <Field kind={"jsk-text-field jsk-field-type-" + sanitise(this.props.type)}>
+        <Field kind={ classes }>
           <label className="jsk-field-label" onClick={ ::this._onLabelClicked }>
             { this.props.label }
           </label>

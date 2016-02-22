@@ -70,7 +70,7 @@ watch-stylus:
 
 build-js: node_modules compile/js
 
-build-test: compile/stylus compile/js $(TEST_JS_TGT) $(TEST_STYL_TGT) $(BUNDLE_TGT)
+build-test: $(TEST_JS_TGT) $(TEST_STYL_TGT) $(BUNDLE_TGT)
 
 clean: $(STYLUS_TGT) $(TGT)
 	rm -r $(STYLUS_TGT) $(TGT) core

@@ -11,7 +11,7 @@
 //----------------------------------------------------------------------
 
 const sanitise = (className) =>
-        String(className).replace(/[\W\D\-_]/g, '').toLowerCase();
+  String(className).replace(/[^\w\d\-_ ]/g, '').toLowerCase();
 
 
 module.exports = {
