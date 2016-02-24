@@ -12,7 +12,9 @@
 
 var classes = require('classnames');
 
-module.exports = (React) => ({ classNames, onClick, children }) =>
-  <div className={ classes('jsk-button', classNames) } onCick={ onClick }>
+const noop = () => null;
+
+module.exports = (React) => ({ className = '', onClick = noop, children }) =>
+  <div className={ 'jsk-button ' + className } onCick={ onClick }>
     <div className="jsk-button-text">{ children }</div>
   </div>

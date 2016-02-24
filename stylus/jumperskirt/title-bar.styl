@@ -1,0 +1,35 @@
+//----------------------------------------------------------------------
+//
+// This source file is part of the JumperSkirt project.
+//
+// Copyright (C) 2014-2016 Quildreen Motta.
+// Licensed under the MIT licence.
+//
+// See LICENCE for licence information.
+// See CONTRIBUTORS for the list of contributors to the project.
+//
+//----------------------------------------------------------------------
+
+// # module: jumperskirt/title-bar
+.jsk-title-bar {
+    background-color: greensea;
+    color: clouds;
+    height: 64px;
+    line-height: 64px;
+    
+    .jsk-title-bar-panels {
+        jsk-grid-row: 12;
+        clearfix();
+    }
+    .jsk-title-bar-left, .jsk-title-bar-right {
+        jsk-grid-column: 2;
+    }
+    .jsk-title-bar-title {
+        jsk-grid-column: 8;
+        text-align: center;
+        font-weight: 600;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        text-shadow: -1px 0 rgba(0, 0, 0, 0.2);
+    }
+}

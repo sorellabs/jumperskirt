@@ -14,6 +14,5 @@ module.exports = (React) => {
   var Button = require('./Button')(React);
 
   return (props) =>
-    <Button classNames={ ['jsk-primary', ...(props.classNames || [])] }
-            {...props} />;
+    <Button {...props} className={ 'jsk-primary ' + (props.className || '') } />;
 };

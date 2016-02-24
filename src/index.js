@@ -12,6 +12,7 @@
 
 module.exports = (React) => ({
   Field: require('./components/Field')(React),
+  TitleBar: require('./components/TitleBar')(React),
 
   TextInput: require('./components/TextInput')(React),
   PasswordInput: require('./components/PasswordInput')(React),

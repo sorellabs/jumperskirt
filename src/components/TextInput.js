@@ -38,7 +38,7 @@ module.exports = (React) => {
         'jsk-has-text'     : this.state.value !== '',
         'jsk-invalid'      : this.state.error.isJust,
         'jsk-text-field'   : true,
-      }, this.props.classNames, 'jsk-field-type-' + this.props.type);
+      }, 'jsk-field-type-' + this.props.type) + ' ' + (this.props.className || '');
 
       return (
         <Field kind={ classes }>
@@ -127,7 +127,7 @@ module.exports = (React) => {
   }
 
   TextInput.propTypes = {
-    classNames   : T.arrayOf(T.string),
+    className    : T.string,
     type         : T.string,
     autoComplete : T.string,
     label        : T.string,
@@ -140,7 +140,7 @@ module.exports = (React) => {
   };
 
   TextInput.defaultProps = {
-    classNames   : [],
+    className    : '',
     type         : 'text',
     placeholder  : '',
     description  : '',
