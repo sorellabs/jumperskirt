@@ -1,0 +1,26 @@
+//----------------------------------------------------------------------
+//
+// This source file is part of the JumperSkirt project.
+//
+// Copyright (C) 2014-2016 Quildreen Motta.
+// Licensed under the MIT licence.
+//
+// See LICENCE for licence information.
+// See CONTRIBUTORS for the list of contributors to the project.
+//
+//----------------------------------------------------------------------
+
+@import "./includes/colours"
+
+.jsk-button-group {
+    display: inline-block;
+    border: 1px solid silver;
+    
+    .jsk-button {
+        background: transparent;
+    }
+    .jsk-button-group-selected .jsk-button {
+        background: jsk-primary-colour;
+        color: jsk-base-colour;
+    }
+}
