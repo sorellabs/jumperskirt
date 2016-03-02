@@ -1,0 +1,107 @@
+//----------------------------------------------------------------------
+//
+// This source file is part of the JumperSkirt project.
+//
+// Copyright (C) 2014-2016 Quildreen Motta.
+// Licensed under the MIT licence.
+//
+// See LICENCE for licence information.
+// See CONTRIBUTORS for the list of contributors to the project.
+//
+//----------------------------------------------------------------------
+
+.jsk-toggle-field {
+    padding-bottom: 1em
+
+    input {
+        display: none
+    }
+    .jsk-toggle-button {
+        position: relative
+        width: 4em
+        height: 1.4em
+        background: jsk-base-faded-text-colour
+        border-radius: 0.7em
+        cursor: pointer
+        display: inline-block
+        transition: all 250ms ease-in-out
+        margin: 0 0.3em
+
+        &:before {
+            content: "\2716"
+            color: clouds
+            font-weight: 600
+            font-size: 1.2em
+            position: absolute
+            display: block
+            top: 0px
+            right: 0px
+            line-height: 1.2em
+            width: 2em
+            text-align: center
+        }
+    }
+    .jsk-toggle-bullet {
+        position: absolute
+        height: 2em
+        width: 2em
+        background: jsk-base-colour
+        border-radius: 100%
+        border: 3px solid jsk-base-faded-text-colour
+        left: -0.3em
+        right: auto
+        z-index: 5
+        top: -0.3em
+        transition: all 250ms ease-in-out
+    }
+    &.jsk-active {
+        .jsk-toggle-button {
+            background: jsk-primary-colour
+
+            &:before {
+                right: auto
+                left: 0px
+                content: "\2714"
+            }
+        }
+        .jsk-toggle-bullet {
+            border-color: jsk-primary-colour
+            left: auto
+            right: -0.3em
+        }
+    }
+    &.jsk-non-editable {
+        .jsk-toggle-button {
+            cursor: default
+        }
+        .jsk-toggle-bullet {
+            opacity: 0
+        }
+    }
+}
+
+.jsk-toggle-list {
+    .jsk-toggle-container {
+        clearfix()
+        margin-bottom: 0.5em
+    }
+    .jsk-label-panel, .jsk-toggle-panel {
+        display: inline-block
+        height: 2em
+        line-height: 2em
+        float: left
+    }
+    .jsk-label-panel {
+        width: 70%
+    }
+    .jsk-toggle-panel {
+        width: 30%
+        text-align: right
+    }
+    .jsk-field-label {
+        font-size: 1.2em
+        text-transform: initial
+        font-weight: normal
+        color: jsk-base-text-colour
+    }
+}
