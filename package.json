@@ -38,7 +38,7 @@
     "macros.operators": "~0.5.1",
     "ink-docstrap": "git://github.com/robotlolita/docstrap",
     "hifive-spec": "~0.2.2",
-    "uglify-js": "~2.4.15",
+    "uglify-js": "~3.6.8",
     "sweet.js": "0.7.1",
     "hifive": "~0.4.0",
     "alright": "~1.1.0",
